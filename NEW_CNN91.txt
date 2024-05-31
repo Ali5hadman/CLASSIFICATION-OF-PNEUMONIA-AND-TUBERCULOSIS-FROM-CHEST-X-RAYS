@@ -1,0 +1,86 @@
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_layer (InputLayer)       [(None, 200, 200, 1  0           []                               
+                                )]                                                                
+                                                                                                  
+ conv2d_334 (Conv2D)            (None, 200, 200, 16  416         ['input_layer[0][0]']            
+                                )                                                                 
+                                                                                                  
+ batch_normalization_189 (Batch  (None, 200, 200, 16  64         ['conv2d_334[0][0]']             
+ Normalization)                 )                                                                 
+                                                                                                  
+ conv2d_335 (Conv2D)            (None, 200, 200, 32  4640        ['batch_normalization_189[0][0]']
+                                )                                                                 
+                                                                                                  
+ batch_normalization_190 (Batch  (None, 200, 200, 32  128        ['conv2d_335[0][0]']             
+ Normalization)                 )                                                                 
+                                                                                                  
+ conv2d_336 (Conv2D)            (None, 200, 200, 64  18496       ['batch_normalization_190[0][0]']
+                                )                                                                 
+                                                                                                  
+ batch_normalization_191 (Batch  (None, 200, 200, 64  256        ['conv2d_336[0][0]']             
+ Normalization)                 )                                                                 
+                                                                                                  
+ max_pooling2d_144 (MaxPooling2  (None, 100, 100, 64  0          ['batch_normalization_191[0][0]']
+ D)                             )                                                                 
+                                                                                                  
+ batch_normalization_192 (Batch  (None, 100, 100, 64  256        ['max_pooling2d_144[0][0]']      
+ Normalization)                 )                                                                 
+                                                                                                  
+ max_pooling2d_145 (MaxPooling2  (None, 50, 50, 64)  0           ['batch_normalization_192[0][0]']
+ D)                                                                                               
+                                                                                                  
+ conv2d_338 (Conv2D)            (None, 50, 50, 256)  147712      ['max_pooling2d_145[0][0]']      
+                                                                                                  
+ batch_normalization_193 (Batch  (None, 50, 50, 256)  1024       ['conv2d_338[0][0]']             
+ Normalization)                                                                                   
+                                                                                                  
+ max_pooling2d_146 (MaxPooling2  (None, 25, 25, 256)  0          ['batch_normalization_193[0][0]']
+ D)                                                                                               
+                                                                                                  
+ conv2d_339 (Conv2D)            (None, 25, 25, 128)  295040      ['max_pooling2d_146[0][0]']      
+                                                                                                  
+ batch_normalization_194 (Batch  (None, 25, 25, 128)  512        ['conv2d_339[0][0]']             
+ Normalization)                                                                                   
+                                                                                                  
+ conv2d_340 (Conv2D)            (None, 25, 25, 64)   73792       ['batch_normalization_194[0][0]']
+                                                                                                  
+ max_pooling2d_147 (MaxPooling2  (None, 12, 12, 64)  0           ['conv2d_340[0][0]']             
+ D)                                                                                               
+                                                                                                  
+ batch_normalization_195 (Batch  (None, 12, 12, 64)  256         ['max_pooling2d_147[0][0]']      
+ Normalization)                                                                                   
+                                                                                                  
+ conv2d_341 (Conv2D)            (None, 12, 12, 32)   18464       ['batch_normalization_195[0][0]']
+                                                                                                  
+ batch_normalization_196 (Batch  (None, 12, 12, 32)  128         ['conv2d_341[0][0]']             
+ Normalization)                                                                                   
+                                                                                                  
+ conv2d_342 (Conv2D)            (None, 12, 12, 16)   4624        ['batch_normalization_196[0][0]']
+                                                                                                  
+ batch_normalization_197 (Batch  (None, 12, 12, 16)  64          ['conv2d_342[0][0]']             
+ Normalization)                                                                                   
+                                                                                                  
+ flatten_17 (Flatten)           (None, 2304)         0           ['batch_normalization_197[0][0]']
+                                                                                                  
+ gap (GlobalAveragePooling2D)   (None, 256)          0           ['conv2d_338[0][0]']             
+                                                                                                  
+ concatenate_1 (Concatenate)    (None, 2560)         0           ['flatten_17[0][0]',             
+                                                                  'gap[0][0]']                    
+                                                                                                  
+ Classifier (Dense)             (None, 2046)         5239806     ['concatenate_1[0][0]']          
+                                                                                                  
+ Classifier1 (Dense)            (None, 1024)         2096128     ['Classifier[0][0]']             
+                                                                                                  
+ dropout_16 (Dropout)           (None, 1024)         0           ['Classifier1[0][0]']            
+                                                                                                  
+ Classifier2 (Dense)            (None, 512)          524800      ['dropout_16[0][0]']             
+                                                                                                  
+ output_layer (Dense)           (None, 3)            1539        ['Classifier2[0][0]']            
+                                                                                                  
+==================================================================================================
+Total params: 8,428,145
+Trainable params: 8,426,801
+Non-trainable params: 1,344
+__________________________________________________________________________________________________
